@@ -1,0 +1,7 @@
+# Preface {.unnumbered}
+
+This workbook aims to provide hands-on guide on how extract, process, analyse and visualise remotely sensed data by using QGIS, an open source GIS tool.
+
+# License
+
+This digital book is (and will always be) **free to use**, and is licensed under the [Creative Commons Attribution-NonCommercial-NoDerivs 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) License.

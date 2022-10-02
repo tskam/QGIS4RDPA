@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Remotely Sensed Data Processing and Analysis: QGIS Methods"
+  author: "DR. Kam Tin Seong"
+  date: "02/10/2022"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - Hands-on_01.qmd
+    - Hands-on_02.qmd
+    - Hands-on_03.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

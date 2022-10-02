@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Remotely Sensed Data Processing and Analysis: QGIS Methods",
+    "section": "",
+    "text": "License\nThis digital book is (and will always be) free to use, and is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 4.0 License."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "QGIS (formally known as Quantum GIS) is a full-features open source GIS software. It is the GIS tool used in this course.\nThis section provides you with step-by-step guide on how to download and install QGIS in your window-based computer (i.e. desktop or laptop)."
+  },
+  {
+    "objectID": "intro.html#downloading-qgis-installer",
+    "href": "intro.html#downloading-qgis-installer",
+    "title": "1  Introduction",
+    "section": "1.1 Downloading QGIS installer",
+    "text": "1.1 Downloading QGIS installer\n\nLaunch the web browser.\nIn the address bar at the top of the window, enter http://qgis.org/ and press Enter.\n\nThe website should look something like this:\n\n\nClick on Download Now button.\n\nYour screen should look similar to the figure below.\n\n\nClick on QGIS Standalone Installer Version 3.26\n\n\nAfter a few seconds (depend on your network speed), a pop-up window appears.\n\n\nClick on the Save File button.\n\nBe patient, the downloading will take a few minutes depend on the speed of your internet."
+  },
+  {
+    "objectID": "intro.html#installing-qgis",
+    "href": "intro.html#installing-qgis",
+    "title": "1  Introduction",
+    "section": "1.2 Installing QGIS",
+    "text": "1.2 Installing QGIS\nIn this section, you will learn how to install QGIS into your computer.\n\nFind the QGIS installer on your computer, right-click and select Install from the context menu to launch the setup.\nClick on the Yes button when Windows prompt you with the dialog “Do you want to allow this app to make change to your device?”\n\nAfter a few second, the Setup Wizard dialog window appears.\n\n\nClick on the Next button.\n\nThe End-User License Agreement dialog window appears.\n\n\nClick on the checkbox in front of I accept the terms in the License Agreement button.\nThen, click on Next button.\n\nThe Destination Folder dialog window appears.\n\n\nEnsure that the Destination Folder is at C:\\Program Files\\QGIS 3.26.1\\\nKeep both checkboxes selected.\nClick on the Next button.\n\nThe Ready to install QGIS 3.26.1 ‘Buenos Aires’ dialog window appears.\n\n\nClick on Install button to start the installation process.\n\n\nQGIS will begin to install. It may take a few minutes to install so be patient.\nWhen the installation is completed, a Setup Wizard window look similar to the screenshot below appears.\n\n\nClick on Finish button.\n\nCongratulations! You have installed QGIS successfully!"
+  },
+  {
+    "objectID": "Hands-on_01.html",
+    "href": "Hands-on_01.html",
+    "title": "2  Satellite Remote Sensing Data Acquisition",
+    "section": "",
+    "text": "Landsat 8 from\nSentinel 2 from"
+  },
+  {
+    "objectID": "Hands-on_02.html",
+    "href": "Hands-on_02.html",
+    "title": "3  Processing and Visualising Landsat 8 Data",
+    "section": "",
+    "text": "This Lesson will cover:\n\nRGB image comparison\nPan Sharpening or Image Fusion\nRadiometric Calibration and Atmospheric Correction"
+  },
+  {
+    "objectID": "Hands-on_03.html",
+    "href": "Hands-on_03.html",
+    "title": "4  Processing and Visualising Sentinel 2 Data",
+    "section": "",
+    "text": "This Lesson will cover:\n\nRGB image comparison\nPan Sharpening or Image Fusion\nRadiometric Calibration and Atmospheric Correction"
+  }
+]

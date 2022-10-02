@@ -1,0 +1,7 @@
+# Satellite Remote Sensing Data Acquisition
+
+In this hands-on exercise, you will learn how to acquire the following publicly available earth observation satellite data:
+
+-   Landsat 8 from
+
+-   Sentinel 2 from

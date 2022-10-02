@@ -1,0 +1,9 @@
+# Processing and Visualising Sentinel 2 Data
+
+In this lesson, we will use a Sentinel 2 data of the Finger Lakes region in New York State, which acquired on September 27, 2016. We will use the R-package **RStoolbox** to do the Landsat image processing and analysis, such as calculating spectral indices and performing principal component transformation, texture analysis, unsupervised and supervised classification and fractional cover analyses.
+
+This Lesson will cover:
+
+-   [RGB image comparison](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#rgb-image-comparison)
+-   [Pan Sharpening or Image Fusion](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#pan-sharpening-or-image-fusion)
+-   [Radiometric Calibration and Atmospheric Correction](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#radiometric-calibration-and-atmospheric-correction)
