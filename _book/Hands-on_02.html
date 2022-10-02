@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Remotely Sensed Data Processing and Analysis: QGIS Methods - 3&nbsp; Processing and Visualising Landsat 8 Data</title>
+<title>Remotely Sensed Data Processing and Analysis: QGIS Methods - 3&nbsp; Acquiring Sentinel-2 Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing and Visualising Landsat 8 Data</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Acquiring Sentinel-2 Data</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -105,7 +105,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_02.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing and Visualising Landsat 8 Data</span></a>
+  <a href="./Hands-on_02.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Acquiring Sentinel-2 Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -123,14 +123,26 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"> <span class="header-section-number">3.1</span> Overview</a></li>
+  <li><a href="#register-and-create-a-user-account-with-copernicus" id="toc-register-and-create-a-user-account-with-copernicus" class="nav-link" data-scroll-target="#register-and-create-a-user-account-with-copernicus"> <span class="header-section-number">3.2</span> Register and create a user account with Copernicus</a>
+  <ul class="collapse">
+  <li><a href="#step-1-select-area-of-interest" id="toc-step-1-select-area-of-interest" class="nav-link" data-scroll-target="#step-1-select-area-of-interest"> <span class="header-section-number">3.2.1</span> Step 1: Select area of interest</a></li>
+  <li><a href="#step-2-specifying-search-criteria" id="toc-step-2-specifying-search-criteria" class="nav-link" data-scroll-target="#step-2-specifying-search-criteria"> <span class="header-section-number">3.2.2</span> Step 2: Specifying search criteria</a></li>
+  <li><a href="#step-3-downloading-a-selected-scene" id="toc-step-3-downloading-a-selected-scene" class="nav-link" data-scroll-target="#step-3-downloading-a-selected-scene"> <span class="header-section-number">3.2.3</span> Step 3: Downloading a selected scene</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing and Visualising Landsat 8 Data</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Acquiring Sentinel-2 Data</span></h1>
 </div>
 
 
@@ -144,15 +156,121 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>In this lesson, we will use a Landsat 8 image of the Finger Lakes region in New York State, which acquired on September 27, 2016. We will use the R-package <strong>RStoolbox</strong> to do the Landsat image processing and analysis, such as calculating spectral indices and performing principal component transformation, texture analysis, unsupervised and supervised classification and fractional cover analyses.</p>
-<p>This Lesson will cover:</p>
+<section id="overview" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
+<p>Sentinel-2 is an Earth observation mission from the Copernicus Programme that systematically acquires optical imagery at high spatial resolution (10 m to 60 m) over land and coastal waters. There are several ways to download Sentinel-2 data including using a QGIS plugion. In this chapter, you will learn how to use interfaces provided by <a href="https://scihub.copernicus.eu/dhus/#/home">Sentinels Scientific Data Hub</a> to :</p>
 <ul>
-<li><a href="file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#rgb-image-comparison">RGB image comparison</a></li>
-<li><a href="file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#pan-sharpening-or-image-fusion">Pan Sharpening or Image Fusion</a></li>
-<li><a href="file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#radiometric-calibration-and-atmospheric-correction">Radiometric Calibration and Atmospheric Correction</a></li>
+<li>search for area of interest,</li>
+<li>define area of interest,</li>
+<li>define specific data extraction criteria, and</li>
+<li>download select data.</li>
 </ul>
+</section>
+<section id="register-and-create-a-user-account-with-copernicus" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="register-and-create-a-user-account-with-copernicus"><span class="header-section-number">3.2</span> Register and create a user account with Copernicus</h2>
+<ul>
+<li>First, let us visit Copernicus Open Access Hub website by click on this <a href="https://scihub.copernicus.eu/dhus/#/home">url</a>.</li>
+</ul>
+<p>Copernicus Open Access Hub website appears on your default web browser as shown be below.</p>
+<p><img src="img02/image1.jpg" class="img-fluid"></p>
+<p>Next, you need to create an account with Copernicus Open Access Hub.</p>
+<ul>
+<li><p>At the top-right corner, click the first button.</p></li>
+<li><p>Next, click on <strong>Sign-up</strong>.</p></li>
+</ul>
+<p><img src="img02/image2.jpg" class="img-fluid" width="217"></p>
+<p>A new window open on your web browser.</p>
+<p><img src="img02/image3.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Complete the form by providing the necessary information.</p></li>
+<li><p>Click on REGISTER button located at the end of of the page.</p></li>
+<li><p>Within a second, you will receive a e-mail from Copernicus requesting you to validate your email. Complete the validation by responding to the e-mail.</p></li>
+</ul>
+<p>Now, you are ready to download Sentinel-2 data from Copernicus Open Access Hub.</p>
+<section id="step-1-select-area-of-interest" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="step-1-select-area-of-interest"><span class="header-section-number">3.2.1</span> Step 1: Select area of interest</h3>
+<p>The easiest way to define the area of interest is by zooming into your area of interest.</p>
+<ul>
+<li>Navigate and zoom into Singapore.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img02/image4.jpg" class="img-fluid"></p>
+<p>Different from EarthExplorer, Copernicus Open Access Hub uses OSM map as the reference map. In fact, there are three reference maps.</p>
+<ul>
+<li>Click on <strong>Map Layer</strong> button located on the upper right of the view window.</li>
+</ul>
+<p><img src="img02/image5.jpg" class="img-fluid" width="233"></p>
+<ul>
+<li>Feel free to change the reference map by clicking on any one of them.</li>
+</ul>
+<p>Next, we will select the area of interest.</p>
+<ul>
+<li>From the view window, click on <strong>Area mode</strong> button.</li>
+</ul>
+<p><img src="img02/image6.jpg" class="img-fluid" width="59"></p>
+<ul>
+<li><p>Position the mouse at the upper left corner of Singapore island.</p></li>
+<li><p>Press of left button of the mouse, then drape to form a window as show on the screenshot below.</p></li>
+</ul>
+<p><img src="img02/image7.jpg" class="img-fluid"></p>
+<ul>
+<li>Release the mouse.</li>
+</ul>
+<p>Notice that the area of interest has been locked.</p>
+<p><img src="img02/image8.jpg" class="img-fluid"></p>
+</section>
+<section id="step-2-specifying-search-criteria" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="step-2-specifying-search-criteria"><span class="header-section-number">3.2.2</span> Step 2: Specifying search criteria</h3>
+<p>Next, we will specify the search criteria.</p>
+<ul>
+<li>Click on the <strong>Advanced Search</strong> button.</li>
+</ul>
+<p><img src="img02/image9.jpg" class="img-fluid"></p>
+<p>The <strong>Advanced Search</strong> panel appears.</p>
+<p><img src="img02/image10.jpg" class="img-fluid" width="361"></p>
+<p>Let say we are interested to find Sentinel-2 data sets for the year 2018.</p>
+<ul>
+<li>For <strong>Sensing period</strong>, select <em>2018/01/01</em> as starting date and <em>2018/12/31</em> as the end date..</li>
+</ul>
+<p><img src="img02/image11.jpg" class="img-fluid"></p>
+<ul>
+<li>Then click on the check-box in front of <strong>Mission: Sentinel 2</strong>.</li>
+</ul>
+<p><img src="img02/image12.jpg" class="img-fluid"></p>
+<ul>
+<li>Lastly, click on <strong>Search</strong> button to start the search.</li>
+</ul>
+<p><img src="img02/image13.jpg" class="img-fluid"></p>
+<p>Within a second, the search results appear on the left panel.</p>
+<p><img src="img02/image14.jpg" class="img-fluid"></p>
+<p>The list shows that there a total of 76 scene meet the search criteria.</p>
+</section>
+<section id="step-3-downloading-a-selected-scene" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="step-3-downloading-a-selected-scene"><span class="header-section-number">3.2.3</span> Step 3: Downloading a selected scene</h3>
+<p>Let sat we are interested to download the scene taken on 2018/02/10.</p>
+<ul>
+<li>Navigate to the scene then click on <strong>View Product Detail</strong> button.</li>
+</ul>
+<p><img src="img02/image15.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Scroll down to read the important information of the scene. For example, the report shows that the scene has relatively less cloud cover of 5.6%.</p></li>
+<li><p>When you are ready to download the data set, click on the <strong>Close</strong> button to close the window.</p></li>
+<li><p>At the left window, hover the mouse over the scene dated 2018/02/10. Click on <strong>Download</strong> button.</p></li>
+</ul>
+<p><img src="img02/image17.jpg" class="img-fluid"></p>
+<p>A pop-up window appears informing us that the offline product retrieval had been initiated and we should check our Cart to know when it will be ready.</p>
+<p><img src="img02/image18.jpg" class="img-fluid" width="274"></p>
+<ul>
+<li>Click on OK button to close the window.</li>
+</ul>
+<p>Be patient, the data size is very large and will take at least an hour to download.</p>
+<blockquote class="blockquote">
+<p>Gentle reminder: The downloaded data will be in zip file format. You need to unzip the file. It is also a good practice to keep the downloaded files in the project folder.</p>
+</blockquote>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
