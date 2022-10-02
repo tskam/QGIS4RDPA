@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Remotely Sensed Data Processing and Analysis: QGIS Methods - 2&nbsp; Satellite Remote Sensing Data Acquisition</title>
+<title>Remotely Sensed Data Processing and Analysis: QGIS Methods - 2&nbsp; Acquiring Landsat 8 Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Satellite Remote Sensing Data Acquisition</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Acquiring Landsat 8 Data</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,7 +100,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_01.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Satellite Remote Sensing Data Acquisition</span></a>
+  <a href="./Hands-on_01.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Acquiring Landsat 8 Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -123,14 +123,28 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"> <span class="header-section-number">2.1</span> Overview</a></li>
+  <li><a href="#register-and-create-a-user-account-with-eros-usgs" id="toc-register-and-create-a-user-account-with-eros-usgs" class="nav-link" data-scroll-target="#register-and-create-a-user-account-with-eros-usgs"> <span class="header-section-number">2.2</span> Register and create a user account with EROS, USGS</a>
+  <ul class="collapse">
+  <li><a href="#step-1.-set-your-area-of-interest-in-the-search-criteria-tab" id="toc-step-1.-set-your-area-of-interest-in-the-search-criteria-tab" class="nav-link" data-scroll-target="#step-1.-set-your-area-of-interest-in-the-search-criteria-tab"> <span class="header-section-number">2.2.1</span> Step 1. Set your area of interest in the “Search Criteria” tab</a></li>
+  <li><a href="#step-2.-select-your-data-to-download-in-the-data-sets-tab" id="toc-step-2.-select-your-data-to-download-in-the-data-sets-tab" class="nav-link" data-scroll-target="#step-2.-select-your-data-to-download-in-the-data-sets-tab"> <span class="header-section-number">2.2.2</span> Step 2. Select your data to download in the “Data Sets” tab</a></li>
+  <li><a href="#step-3.-filter-your-data-in-the-additional-criteria-tab" id="toc-step-3.-filter-your-data-in-the-additional-criteria-tab" class="nav-link" data-scroll-target="#step-3.-filter-your-data-in-the-additional-criteria-tab"> <span class="header-section-number">2.2.3</span> Step 3. Filter your data in the “Additional Criteria” tab</a></li>
+  <li><a href="#step-4.-download-free-landsat-imagery-in-the-results-tab-usgs-earth-explorer-results" id="toc-step-4.-download-free-landsat-imagery-in-the-results-tab-usgs-earth-explorer-results" class="nav-link" data-scroll-target="#step-4.-download-free-landsat-imagery-in-the-results-tab-usgs-earth-explorer-results"> <span class="header-section-number">2.2.4</span> Step 4. Download free Landsat imagery in the “Results” tab usgs earth explorer results</a></li>
+  </ul></li>
+  <li><a href="#downloading-sentinel-2-data" id="toc-downloading-sentinel-2-data" class="nav-link" data-scroll-target="#downloading-sentinel-2-data"> <span class="header-section-number">2.3</span> Downloading Sentinel 2 data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Satellite Remote Sensing Data Acquisition</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Acquiring Landsat 8 Data</span></h1>
 </div>
 
 
@@ -144,13 +158,135 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>In this hands-on exercise, you will learn how to acquire the following publicly available earth observation satellite data:</p>
+<section id="overview" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">2.1</span> Overview</h2>
+<p>Landsat 8 is an American Earth observation satellite launched on 11 February 2013. The data can be downloaded free of charge by using EarthExplorer portal of USGS. In this chapter, you will learn how to use interfaces provided by EarthExplorer to :</p>
 <ul>
-<li><p>Landsat 8 from</p></li>
-<li><p>Sentinel 2 from</p></li>
+<li>search for area of interest,</li>
+<li>define area of interest,</li>
+<li>define specific data extraction criteria, and</li>
+<li>download select data.</li>
 </ul>
+</section>
+<section id="register-and-create-a-user-account-with-eros-usgs" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="register-and-create-a-user-account-with-eros-usgs"><span class="header-section-number">2.2</span> Register and create a user account with EROS, USGS</h2>
+<ul>
+<li>First, let us visit EarthExplorer website by click on this <a href="https://earthexplorer.usgs.gov/">url</a>.</li>
+</ul>
+<p>EarthExplorer website appears on your default web browser as shown be below.</p>
+<p><img src="img01/image1.jpg" class="img-fluid"></p>
+<p>Next, you need to create an account with EarthExplorer, USGS.</p>
+<ul>
+<li>At the top-right corner, click the <strong>Login</strong> button.</li>
+</ul>
+<p>A new window open on your web browser.</p>
+<p><img src="img01/image2.jpg" class="img-fluid"></p>
+<ul>
+<li>Scroll down the page until you see the <strong>Create New Account</strong> button.</li>
+</ul>
+<p><img src="img01/image3.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Create New Account</strong> button.</li>
+</ul>
+<p>EROS registration page appears on your browser.</p>
+<p><img src="img01/image4.jpg" class="img-fluid"></p>
+<ul>
+<li>Complete the form to register.</li>
+</ul>
+<p>Once you have registered with USGS successfully, use the newly created username and password to login EarthExplorer.</p>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img01/image5.jpg" class="img-fluid"></p>
+<p>Notice the now the upper right corner will include your username.</p>
+<p>The USGS Earth Explorer interface uses Google Maps. You can zoom in and out with the mouse wheel as if you are in Google Maps. Google street view is also enabled, where you can drop a marker and get a real view of the location.</p>
+<p>Before getting started, it is always a good practice to click on Clear Search Criteria in order to clear away all the previous search criteria.</p>
+<p>In order to download Landsat 8 data from USGS Earth Explorer, here are the four steps you’ll need to follow:</p>
+<section id="step-1.-set-your-area-of-interest-in-the-search-criteria-tab" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="step-1.-set-your-area-of-interest-in-the-search-criteria-tab"><span class="header-section-number">2.2.1</span> Step 1. Set your area of interest in the “Search Criteria” tab</h3>
+<p>The easiest way to define the area of interest is by zooming into your area of interest.</p>
+<ul>
+<li>Navigate and zoom into Singapore.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img01/image6.jpg" class="img-fluid"></p>
+<p>Once you have confirmed the area of interest,</p>
+<ul>
+<li>Scroll downward until you see Use Map button appears on the left panel.</li>
+</ul>
+<p><img src="img01/image7.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on Use Map button.</li>
+</ul>
+<p>Notice that the selected area of interest appears red and the four corner coordinates are displayed on the left panel.</p>
+<p><img src="img01/image8.jpg" class="img-fluid"></p>
+</section>
+<section id="step-2.-select-your-data-to-download-in-the-data-sets-tab" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="step-2.-select-your-data-to-download-in-the-data-sets-tab"><span class="header-section-number">2.2.2</span> Step 2. Select your data to download in the “Data Sets” tab</h3>
+<p>Next, we are going to select the data set.</p>
+<ul>
+<li>Scroll down until the end of the page, click on <strong>Data Sets</strong> button.</li>
+</ul>
+<p><img src="img01/image9.jpg" class="img-fluid"></p>
+<p>The available data sets list appears on the left panel as shown below.</p>
+<p><img src="img01/image10.jpg" class="img-fluid"></p>
+<p>USGS Earth Explorer provides a comprehensive remote sensing datasets: aerial imagery, <a href="https://gisgeography.com/avhrr-advanced-very-high-resolution-radiometer/">AVHRR</a>, commercial imagery, <a href="https://gisgeography.com/dem-dsm-dtm-differences/">digital elevation models</a>, <a href="https://gisgeography.com/landsat-program-satellite-imagery-bands/">Landsat</a>, <a href="https://gisgeography.com/lidar-light-detection-and-ranging/">LiDAR</a>, <a href="https://gisgeography.com/modis-satellite/">MODIS</a>, <a href="https://gisgeography.com/synthetic-aperture-radar-examples/">Radar</a>, and more. We are interested on Landsat 8 data.</p>
+<ul>
+<li>From the list, click on the check-box in front of <strong>Landsat</strong> -&gt; <strong>Landsat Collection 2 Level 1</strong> -&gt; <strong>Landsat 8-9 OLI/TIRS C2L1</strong>.</li>
+</ul>
+<p><img src="img01/image11.jpg" class="img-fluid" width="366"></p>
+</section>
+<section id="step-3.-filter-your-data-in-the-additional-criteria-tab" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="step-3.-filter-your-data-in-the-additional-criteria-tab"><span class="header-section-number">2.2.3</span> Step 3. Filter your data in the “Additional Criteria” tab</h3>
+<p>Next, we will define additional search criteria.</p>
+<ul>
+<li>From the left panel, click on <strong>Additional Criteria</strong> button.</li>
+</ul>
+<p><img src="img01/image12.jpg" class="img-fluid"></p>
+<p>In general, we would like to select a cloud free Landsat 8 data. However, it is almost impossible to obtain a cloud free data sets. To be reality, a search criterion of 10-15% land cloud cover will be used.</p>
+<ul>
+<li><p>From the left panel, click on the cross button at the back of <strong>Land Cloud Cover</strong>.</p></li>
+<li><p>Type 5 to 15. This mean we would like to narrow the search to 5-15% land cloud cover.</p></li>
+</ul>
+<p><img src="img01/image13.jpg" class="img-fluid" width="320"></p>
+</section>
+<section id="step-4.-download-free-landsat-imagery-in-the-results-tab-usgs-earth-explorer-results" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="step-4.-download-free-landsat-imagery-in-the-results-tab-usgs-earth-explorer-results"><span class="header-section-number">2.2.4</span> Step 4. Download free Landsat imagery in the “Results” tab usgs earth explorer results</h3>
+<p>Now, we are ready to download the select data sets. However, before we do so, it is a best practice for us to do a quick view of the data sets meeting our search criteria.</p>
+<ul>
+<li>From the left panel, click on Results button.</li>
+</ul>
+<p>A list of Landsat 8 data meeting the search criteria appears on the left panel.</p>
+<p><img src="img01/image14.jpg" class="img-fluid" width="399"></p>
+<p>Before downloading any of the data sets, it is important for us to examine the scene in order to ensure that they are indeed fall within our area of interest. For example if you click on the thumb image dated 2019/02/11, you will notice that it did not Singapore.</p>
+<p><img src="img01/image15.jpg" class="img-fluid"></p>
+<p>After careful examination, let us down the data set acquired on 2018/05/24.</p>
+<ul>
+<li>From the data set pane, click on <strong>Download</strong> button.</li>
+</ul>
+<p><img src="img01/image16.jpg" class="img-fluid" width="362"></p>
+<p><strong>Download Options</strong> window appears.</p>
+<p><img src="img01/image17.jpg" class="img-fluid" width="395"></p>
+<p>Since we are going to use the data for image processing and analysis, we will download the Level 1 GeoTIFF data product.</p>
+<ul>
+<li>Click on the drop-down list of <strong>Product Options</strong>.</li>
+</ul>
+<p>Product Download Options window appears.</p>
+<p><img src="img01/image18.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the button in front of <strong>Landsat Collection 2 Level-1 Product Bundle</strong>.</li>
+</ul>
+<p>Be patient, the data size is very large and will take sometime to download.</p>
+<p><img src="img01/image19.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Gentle reminder: The downloaded data will be in zip file format. You need to unzip the file. It is also a good practice to keep the downloaded files in the project folder.</p>
+</blockquote>
+</section>
+</section>
+<section id="downloading-sentinel-2-data" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="downloading-sentinel-2-data"><span class="header-section-number">2.3</span> Downloading Sentinel 2 data</h2>
+<p>Sentinel-2 is an Earth observation mission from the Copernicus Programme that systematically acquires optical imagery at high spatial resolution (10 m to 60 m) over land and coastal waters.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
