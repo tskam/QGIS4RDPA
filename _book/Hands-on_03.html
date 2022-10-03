@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Remotely Sensed Data Processing and Analysis: QGIS Methods - 4&nbsp; Processing and Visualising Sentinel 2 Data</title>
+<title>Remotely Sensed Data Processing and Analysis: QGIS Methods - 4&nbsp; Processing and Visualising Landsat 8 Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Processing and Visualising Sentinel 2 Data</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Processing and Visualising Landsat 8 Data</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -110,7 +110,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Hands-on_03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Processing and Visualising Sentinel 2 Data</span></a>
+  <a href="./Hands-on_03.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Processing and Visualising Landsat 8 Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -123,14 +123,28 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"> <span class="header-section-number">4.1</span> Overview</a></li>
+  <li><a href="#installing-semi-automatic-classification-plugin" id="toc-installing-semi-automatic-classification-plugin" class="nav-link" data-scroll-target="#installing-semi-automatic-classification-plugin"> <span class="header-section-number">4.2</span> Installing Semi-Automatic Classification Plugin</a></li>
+  <li><a href="#importing-landsat-8-data" id="toc-importing-landsat-8-data" class="nav-link" data-scroll-target="#importing-landsat-8-data"> <span class="header-section-number">4.3</span> Importing Landsat 8 data</a></li>
+  <li><a href="#extracting-scene-within-singapore" id="toc-extracting-scene-within-singapore" class="nav-link" data-scroll-target="#extracting-scene-within-singapore"> <span class="header-section-number">4.4</span> Extracting Scene within Singapore</a>
+  <ul class="collapse">
+  <li><a href="#importing-mp14-planning-subzone-boundary-into-qgis" id="toc-importing-mp14-planning-subzone-boundary-into-qgis" class="nav-link" data-scroll-target="#importing-mp14-planning-subzone-boundary-into-qgis"> <span class="header-section-number">4.4.1</span> Importing MP14 Planning Subzone boundary into QGIS</a></li>
+  <li><a href="#extracting-raster-data" id="toc-extracting-raster-data" class="nav-link" data-scroll-target="#extracting-raster-data"> <span class="header-section-number">4.4.2</span> Extracting raster data</a></li>
+  <li><a href="#saving-the-extracted-raster-layer-into-geopackage" id="toc-saving-the-extracted-raster-layer-into-geopackage" class="nav-link" data-scroll-target="#saving-the-extracted-raster-layer-into-geopackage"> <span class="header-section-number">4.4.3</span> Saving the extracted raster layer into Geopackage</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Processing and Visualising Sentinel 2 Data</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Processing and Visualising Landsat 8 Data</span></h1>
 </div>
 
 
@@ -144,15 +158,181 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>In this lesson, we will use a Sentinel 2 data of the Finger Lakes region in New York State, which acquired on September 27, 2016. We will use the R-package <strong>RStoolbox</strong> to do the Landsat image processing and analysis, such as calculating spectral indices and performing principal component transformation, texture analysis, unsupervised and supervised classification and fractional cover analyses.</p>
-<p>This Lesson will cover:</p>
+<section id="overview" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">4.1</span> Overview</h2>
+<p>In this lesson, we will focus on learning how to process the downloaded Landsat 8 data using QGIS.</p>
+<p>This chapter is a continuouation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to <a href="Hands-on_01.html">Chapter 2: Acquiring Landsat 8 Data</a> to download a Landsat 8 data set of an area of interest.</p>
 <ul>
 <li><a href="file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#rgb-image-comparison">RGB image comparison</a></li>
 <li><a href="file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#pan-sharpening-or-image-fusion">Pan Sharpening or Image Fusion</a></li>
 <li><a href="file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#radiometric-calibration-and-atmospheric-correction">Radiometric Calibration and Atmospheric Correction</a></li>
 </ul>
+</section>
+<section id="installing-semi-automatic-classification-plugin" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="installing-semi-automatic-classification-plugin"><span class="header-section-number">4.2</span> Installing Semi-Automatic Classification Plugin</h2>
+<p>Before we getting started, we will install a QGIS plugin specially designed for digital image processing and classification called Semi-Automatic Classification Plugin (SCP). It provides tools for the download, the preprocessing and postprocessing of images. It also allows for the supervised classification of remote sensing images. The plugin requires the installation of GDAL, OGR, Numpy, SciPy, and Matplotlib. Some tools require also the installation of SNAP (ESA Sentinel Application Platform). For more information please visit https://fromgistors.blogspot.com .</p>
+<ul>
+<li>From the menu bar, click on <strong>Plugin</strong> -&gt; <strong>Manage and Install Plugins</strong>.</li>
+</ul>
+<p><img src="img03/image1.jpg" class="img-fluid" width="300"></p>
+<p>Plugins dialog window appears.</p>
+<ul>
+<li>At the search, type Semi-Automatic.</li>
+</ul>
+<p>You will see the plugin appears.</p>
+<p><img src="img03/image2.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Install Plugin</strong> button to install the plugin.</li>
+</ul>
+<p>When the installation completed,</p>
+<ul>
+<li>click on the <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+<p>By default, SCP tools menu and icons should appears on your QGIS. If they are not there, do the followings:</p>
+<ul>
+<li>From the menu bar, click on View -&gt; toolbars.</li>
+</ul>
+<p><img src="img03/image3.jpg" class="img-fluid" width="247"></p>
+<ul>
+<li>Click on the check-box in front of <strong>SCP Working Toolbar</strong>.</li>
+</ul>
+<p>Notice that SCP Working Toolbar is added on QGIS menu bar.</p>
+<p><img src="img03/image4.jpg" class="img-fluid"></p>
+</section>
+<section id="importing-landsat-8-data" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="importing-landsat-8-data"><span class="header-section-number">4.3</span> Importing Landsat 8 data</h2>
+<p>Now, let us import the Landsat 8 data into QGIS environment.</p>
+<ul>
+<li>From the menu bar, select <strong>Layer</strong> -&gt; <strong>Add Layer</strong> -&gt; <strong>Add Raster Layer</strong>.</li>
+</ul>
+<p><img src="img03/image5.jpg" class="img-fluid"></p>
+<p><strong>Data Source Manager|Raster</strong> dialog window appears.</p>
+<p><img src="img03/image6.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Click on the button at the end of <strong>Raster dataset(s)</strong>.</p></li>
+<li><p>Navigate to the folder where the Landsat 8 data were reside.</p></li>
+<li><p>Press on ctrl key, then click on <strong>B1</strong> until <strong>B11</strong> data.</p></li>
+</ul>
+<p><img src="img03/image7.jpg" class="img-fluid"></p>
+<ul>
+<li>Then, click on <strong>Open</strong> button.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image8.jpg" class="img-fluid"></p>
+<p>Notice that the scene cover areas beyond the national boundary of Singapore.</p>
+</section>
+<section id="extracting-scene-within-singapore" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="extracting-scene-within-singapore"><span class="header-section-number">4.4</span> Extracting Scene within Singapore</h2>
+<p>We are going to use the extend of MP14 Planning Subzone GIS data to extract the raw scene. The data can be downloaded from data.gov.sg homepage. It is in ESRI shapefile format.</p>
+<section id="importing-mp14-planning-subzone-boundary-into-qgis" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="importing-mp14-planning-subzone-boundary-into-qgis"><span class="header-section-number">4.4.1</span> Importing MP14 Planning Subzone boundary into QGIS</h3>
+<p>After downloading MP14 Planning Subzone boundary shapefile, we will import it into QGIS environment.</p>
+<ul>
+<li>From the menu bar, select <strong>Layer</strong> -&gt; <strong>Add Layer</strong> -&gt; <strong>Add Vector Layer</strong>.</li>
+</ul>
+<p><img src="img03/image9.jpg" class="img-fluid"></p>
+<p><strong>Data Source Manager|Vector</strong> dialog window appears.</p>
+<ul>
+<li><p>Click on the button at the end of Vector Dataset(s).</p></li>
+<li><p>Navigate to the folder where MP14 Planning Subzone Boundary shapefile are reside.</p></li>
+<li><p>Click on the file with .shp extension.</p></li>
+<li><p>Click on <strong>Open</strong> button.</p></li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image19.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on Add button.</li>
+</ul>
+<p>When the data is added onto QGIS successfully.</p>
+<ul>
+<li>click on Close button to close the dialog window.</li>
+</ul>
+<p>Your screen should look similar to the screenshot below.</p>
+<p><img src="img03/image20.jpg" class="img-fluid"></p>
+<p>Before we can perform the raster data extraction, it is important for us to ensure that the reference data (i.e.&nbsp;MP14 Planning Subzone Boundary) has a proper EPSG code.</p>
+<ul>
+<li>Right-click on <code>MP14_PLNG_AREA_NO_SEA_PL</code> and select <strong>Properties</strong> from the context menu.</li>
+<li>If necessary click on <strong>Source</strong> tab.</li>
+</ul>
+<p>Notice that although the shapefile is in svy21 projection system but it does not have appropriate EPSG code.</p>
+<p><img src="img03/image21.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on the drop-down list behind, select <strong>EPSG:3414 - SVY21 / Singapore TM</strong>.</li>
+</ul>
+<p><img src="img03/image22.jpg" class="img-fluid"></p>
+<ul>
+<li><p>Click on <strong>Apply</strong> button to update the change.</p></li>
+<li><p>Click on <strong>OK</strong> to close the dialog window.</p></li>
+</ul>
+</section>
+<section id="extracting-raster-data" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="extracting-raster-data"><span class="header-section-number">4.4.2</span> Extracting raster data</h3>
+<p>Now, we are ready to extract the data.</p>
+<ul>
+<li>From the menu bar, select <strong>Raster</strong> -&gt; <strong>Extraction</strong> -&gt; <strong>Clip Raster by Extent</strong>.</li>
+</ul>
+<p><img src="img03/image23.jpg" class="img-fluid" width="335"></p>
+<p><strong>Clip Raster by Extent</strong> appears.</p>
+<p><img src="img03/image24.jpg" class="img-fluid"></p>
+<ul>
+<li>For <strong>Input layer</strong>, select one of the raster layer from the list.</li>
+</ul>
+<p><img src="img03/image25.jpg" class="img-fluid"></p>
+<ul>
+<li><p>For <strong>Clipping exten</strong>t, click on the button at the end of the pane.</p></li>
+<li><p>Select <strong>Calculate from Layer</strong> from the context menu,</p></li>
+</ul>
+<p><img src="img03/image26.jpg" class="img-fluid" width="253"></p>
+<ul>
+<li>Select <code>MP14_PLNG_AREA_NO_SEA_PL</code> from the list.</li>
+</ul>
+<p><img src="img03/image27.jpg" class="img-fluid"></p>
+<ul>
+<li>Click on <strong>Run</strong> button.</li>
+</ul>
+<p>When the process completed, read the process log carefully to ensure that there is not error.</p>
+<ul>
+<li>Click on <strong>Close</strong> button to close the dialog window.</li>
+</ul>
+<p>Notice that a temporary layer called <code>Clipped</code> is added in the <em>Layers</em> panel and display on the <em>View</em> window.</p>
+<p><img src="img03/image28.jpg" class="img-fluid" width="349"></p>
+</section>
+<section id="saving-the-extracted-raster-layer-into-geopackage" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="saving-the-extracted-raster-layer-into-geopackage"><span class="header-section-number">4.4.3</span> Saving the extracted raster layer into Geopackage</h3>
+<p>Next , we will save the temporary clipped raster layer into GeoPackage.</p>
+<ul>
+<li><p>From <strong>Layer</strong> panel, right-click on <strong>Clipped</strong>.</p></li>
+<li><p>Select <strong>Export</strong> -&gt; <strong>Save as</strong> from the context menu.</p></li>
+</ul>
+<p><strong>Save Raster Layer</strong> as dialog window appears.</p>
+<p><img src="img03/image29.jpg" class="img-fluid"></p>
+<ul>
+<li><p>For <strong>Format</strong>, select <strong>GeoPackage</strong> from the drop-down list.</p></li>
+<li><p>For <strong>File name</strong>, navigate to <code>GeoPackage</code> folder (Note: Create a folder called <code>GeoPackage</code> if you do not have one).</p></li>
+<li><p>Give a new GeoPackage name (i.e.&nbsp;SG).</p></li>
+<li><p>For <strong>Layer name</strong>, give the layer a name such as <code>LC08_20180508_B1</code>.</p></li>
+</ul>
+<p>Note that this is an Landsat 8 data, we tend to include the date when the scene was captured (i.e.&nbsp;20180508) and which band (i.e.&nbsp;B1) for the layer name.</p>
+<ul>
+<li>Lastly, click on <strong>OK</strong> button to run the process.</li>
+</ul>
+<p>When the process completed, notice that a new layer called <code>LC08_20180508_B1</code> is added into <strong>Layer</strong> panel and display on <strong>View</strong> window.</p>
+<p><img src="img03/image30.jpg" class="img-fluid"></p>
+<ul>
+<li>Remove <code>Clipped</code> temporary layer from <strong>Layer</strong> panel.</li>
+</ul>
+<blockquote class="blockquote">
+<p>DIY: Repeat the steps you had learned to extract the remaining 10 bands and save them into the newly created GeoPackage.</p>
+</blockquote>
+<ul>
+<li>Check all the extracted file carefully. If all layers are in proper order. Remove the raw scene layers from QGIS’s <strong>Layer</strong> panel.</li>
+</ul>
+<p>The <strong>Layer</strong> panel should have the extracted layers as shown below.</p>
+<p><img src="img03/image31.jpg" class="img-fluid" width="274"></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

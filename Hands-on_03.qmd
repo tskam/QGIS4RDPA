@@ -1,9 +1,200 @@
-# Processing and Visualising Sentinel 2 Data
+# Processing and Visualising Landsat 8 Data
 
-In this lesson, we will use a Sentinel 2 data of the Finger Lakes region in New York State, which acquired on September 27, 2016. We will use the R-package **RStoolbox** to do the Landsat image processing and analysis, such as calculating spectral indices and performing principal component transformation, texture analysis, unsupervised and supervised classification and fractional cover analyses.
+## Overview
 
-This Lesson will cover:
+In this lesson, we will focus on learning how to process the downloaded Landsat 8 data using QGIS.
+
+This chapter is a continuouation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to [Chapter 2: Acquiring Landsat 8 Data](Hands-on_01.html) to download a Landsat 8 data set of an area of interest.
 
 -   [RGB image comparison](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#rgb-image-comparison)
 -   [Pan Sharpening or Image Fusion](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#pan-sharpening-or-image-fusion)
 -   [Radiometric Calibration and Atmospheric Correction](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#radiometric-calibration-and-atmospheric-correction)
+
+## Installing Semi-Automatic Classification Plugin
+
+Before we getting started, we will install a QGIS plugin specially designed for digital image processing and classification called Semi-Automatic Classification Plugin (SCP). It provides tools for the download, the preprocessing and postprocessing of images. It also allows for the supervised classification of remote sensing images. The plugin requires the installation of GDAL, OGR, Numpy, SciPy, and Matplotlib. Some tools require also the installation of SNAP (ESA Sentinel Application Platform). For more information please visit https://fromgistors.blogspot.com .
+
+-   From the menu bar, click on **Plugin** -\> **Manage and Install Plugins**.
+
+![](img03/image1.jpg){width="300"}
+
+Plugins dialog window appears.
+
+-   At the search, type Semi-Automatic.
+
+You will see the plugin appears.
+
+![](img03/image2.jpg)
+
+-   Click on **Install Plugin** button to install the plugin.
+
+When the installation completed,
+
+-   click on the **Close** button to close the dialog window.
+
+By default, SCP tools menu and icons should appears on your QGIS. If they are not there, do the followings:
+
+-   From the menu bar, click on View -\> toolbars.
+
+![](img03/image3.jpg){width="247"}
+
+-   Click on the check-box in front of **SCP Working Toolbar**.
+
+Notice that SCP Working Toolbar is added on QGIS menu bar.
+
+![](img03/image4.jpg)
+
+## Importing Landsat 8 data
+
+Now, let us import the Landsat 8 data into QGIS environment.
+
+-   From the menu bar, select **Layer** -\> **Add Layer** -\> **Add Raster Layer**.
+
+![](img03/image5.jpg)
+
+**Data Source Manager\|Raster** dialog window appears.
+
+![](img03/image6.jpg)
+
+-   Click on the button at the end of **Raster dataset(s)**.
+
+-   Navigate to the folder where the Landsat 8 data were reside.
+
+-   Press on ctrl key, then click on **B1** until **B11** data.
+
+![](img03/image7.jpg)
+
+-   Then, click on **Open** button.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image8.jpg)
+
+Notice that the scene cover areas beyond the national boundary of Singapore.
+
+## Extracting Scene within Singapore
+
+We are going to use the extend of MP14 Planning Subzone GIS data to extract the raw scene. The data can be downloaded from data.gov.sg homepage. It is in ESRI shapefile format.
+
+### Importing MP14 Planning Subzone boundary into QGIS
+
+After downloading MP14 Planning Subzone boundary shapefile, we will import it into QGIS environment.
+
+-   From the menu bar, select **Layer** -\> **Add Layer** -\> **Add Vector Layer**.
+
+![](img03/image9.jpg)
+
+**Data Source Manager\|Vector** dialog window appears.
+
+-   Click on the button at the end of Vector Dataset(s).
+
+-   Navigate to the folder where MP14 Planning Subzone Boundary shapefile are reside.
+
+-   Click on the file with .shp extension.
+
+-   Click on **Open** button.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image19.jpg)
+
+-   Click on Add button.
+
+When the data is added onto QGIS successfully.
+
+-   click on Close button to close the dialog window.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image20.jpg)
+
+Before we can perform the raster data extraction, it is important for us to ensure that the reference data (i.e. MP14 Planning Subzone Boundary) has a proper EPSG code.
+
+-   Right-click on `MP14_PLNG_AREA_NO_SEA_PL` and select **Properties** from the context menu.
+-   If necessary click on **Source** tab.
+
+Notice that although the shapefile is in svy21 projection system but it does not have appropriate EPSG code.
+
+![](img03/image21.jpg)
+
+-   Click on the drop-down list behind, select **EPSG:3414 - SVY21 / Singapore TM**.
+
+![](img03/image22.jpg)
+
+-   Click on **Apply** button to update the change.
+
+-   Click on **OK** to close the dialog window.
+
+### Extracting raster data
+
+Now, we are ready to extract the data.
+
+-   From the menu bar, select **Raster** -\> **Extraction** -\> **Clip Raster by Extent**.
+
+![](img03/image23.jpg){width="335"}
+
+**Clip Raster by Extent** appears.
+
+![](img03/image24.jpg)
+
+-   For **Input layer**, select one of the raster layer from the list.
+
+![](img03/image25.jpg)
+
+-   For **Clipping exten**t, click on the button at the end of the pane.
+
+-   Select **Calculate from Layer** from the context menu,
+
+![](img03/image26.jpg){width="253"}
+
+-   Select `MP14_PLNG_AREA_NO_SEA_PL` from the list.
+
+![](img03/image27.jpg)
+
+-   Click on **Run** button.
+
+When the process completed, read the process log carefully to ensure that there is not error.
+
+-   Click on **Close** button to close the dialog window.
+
+Notice that a temporary layer called `Clipped` is added in the *Layers* panel and display on the *View* window.
+
+![](img03/image28.jpg){width="349"}
+
+### Saving the extracted raster layer into Geopackage
+
+Next , we will save the temporary clipped raster layer into GeoPackage.
+
+-   From **Layer** panel, right-click on **Clipped**.
+
+-   Select **Export** -\> **Save as** from the context menu.
+
+**Save Raster Layer** as dialog window appears.
+
+![](img03/image29.jpg)
+
+-   For **Format**, select **GeoPackage** from the drop-down list.
+
+-   For **File name**, navigate to `GeoPackage` folder (Note: Create a folder called `GeoPackage` if you do not have one).
+
+-   Give a new GeoPackage name (i.e. SG).
+
+-   For **Layer name**, give the layer a name such as `LC08_20180508_B1`.
+
+Note that this is an Landsat 8 data, we tend to include the date when the scene was captured (i.e. 20180508) and which band (i.e. B1) for the layer name.
+
+-   Lastly, click on **OK** button to run the process.
+
+When the process completed, notice that a new layer called `LC08_20180508_B1` is added into **Layer** panel and display on **View** window.
+
+![](img03/image30.jpg)
+
+-   Remove `Clipped` temporary layer from **Layer** panel.
+
+> DIY: Repeat the steps you had learned to extract the remaining 10 bands and save them into the newly created GeoPackage.
+
+-   Check all the extracted file carefully. If all layers are in proper order. Remove the raw scene layers from QGIS's **Layer** panel.
+
+The **Layer** panel should have the extracted layers as shown below.
+
+![](img03/image31.jpg){width="274"}
