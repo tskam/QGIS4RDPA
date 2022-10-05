@@ -67,7 +67,7 @@
     "href": "Hands-on_03.html",
     "title": "4  Processing and Visualising Landsat 8 Data",
     "section": "",
-    "text": "In this chapter, we will focus on learning how to process the downloaded Landsat 8 data using QGIS and Semi-Automatic Classification Plugin of QGIS. It is a continuation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to Chapter 2: Acquiring Landsat 8 Data to download a Landsat 8 data set of an area of interest.\n\nRGB image comparison\nPan Sharpening or Image Fusion\nRadiometric Calibration and Atmospheric Correction"
+    "text": "In this chapter, we will focus on learning how to process the downloaded Landsat 8 data using QGIS and Semi-Automatic Classification Plugin of QGIS. It is a continuation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to Chapter 2: Acquiring Landsat 8 Data to download a Landsat 8 data set of an area of interest.\nBy the end of this chapter, you will acquire the skills to:\n\nextract subset from a complete scene,\nenhance individual band for clearer visualisation,\ncreate composite images by using multiple bands for visual interpretation,\ncompute vegetation indices for land cover analysis."
   },
   {
     "objectID": "Hands-on_03.html#installing-semi-automatic-classification-plugin",

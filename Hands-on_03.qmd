@@ -4,9 +4,12 @@
 
 In this chapter, we will focus on learning how to process the downloaded Landsat 8 data using QGIS and Semi-Automatic Classification Plugin of QGIS. It is a continuation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to [Chapter 2: Acquiring Landsat 8 Data](Hands-on_01.html) to download a Landsat 8 data set of an area of interest.
 
--   [RGB image comparison](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#rgb-image-comparison)
--   [Pan Sharpening or Image Fusion](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#pan-sharpening-or-image-fusion)
--   [Radiometric Calibration and Atmospheric Correction](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#radiometric-calibration-and-atmospheric-correction)
+By the end of this chapter, you will acquire the skills to:
+
+- extract subset from a complete scene,
+- enhance individual band for clearer visualisation, 
+- create composite images by using multiple bands for visual interpretation,
+- compute vegetation indices for land cover analysis.
 
 ## Installing Semi-Automatic Classification Plugin
 
