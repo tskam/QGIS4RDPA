@@ -2,9 +2,7 @@
 
 ## Overview
 
-In this lesson, we will focus on learning how to process the downloaded Landsat 8 data using QGIS.
-
-This chapter is a continuouation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to [Chapter 2: Acquiring Landsat 8 Data](Hands-on_01.html) to download a Landsat 8 data set of an area of interest.
+In this chapter, we will focus on learning how to process the downloaded Landsat 8 data using QGIS and Semi-Automatic Classification Plugin of QGIS. It is a continuation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to [Chapter 2: Acquiring Landsat 8 Data](Hands-on_01.html) to download a Landsat 8 data set of an area of interest.
 
 -   [RGB image comparison](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#rgb-image-comparison)
 -   [Pan Sharpening or Image Fusion](file:///D:/github%20repository/Geospatial%20data%20Science%20in%20R/landsat-8-image-processing.html#pan-sharpening-or-image-fusion)
@@ -198,3 +196,207 @@ When the process completed, notice that a new layer called `LC08_20180508_B1` is
 The **Layer** panel should have the extracted layers as shown below.
 
 ![](img03/image31.jpg){width="274"}
+
+## Image Enhancement using QGIS
+
+Image enhancement algorithms are applied to remotely sensed data to improve the appearance of an image for human visual analysis or occasionally for subsequent machine analysis. There is no such thing as the ideal or best image enhancement because the results are ultimately evaluated by humans, who make subjective judgments as to whether an enhanced image is useful.
+
+In this section, you will learn how to perform image enhancement task by using basic QGIS function.
+
+-   From Layers panel, click on the check-box of `LC08_20180508_B1`.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image32.jpg)
+
+This is Landsat Band1 image. Unfortunately, this image layer has very poor contrast. As a result, we can hardly see any ground features from the image. This issue can be address by using image enhancement provided by QGIS.
+
+-   From the menu bar, select Zoom in ![](img03/image33.jpg){width="23"} button.
+
+Build a small rectangle look similar to the screenshot below.
+
+![](img03/image34.jpg){width="366"}
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image35.jpg)
+
+-   Now, right-click on `LC08_20180508_B1`, select Stretch Using Current Extend from the context menu.
+
+Your screen should look similar to the screenshot below.
+
+![](img03/image36.jpg)
+
+Let us zoom back to the full extent of the image and take a look at what has changed.
+
+-   From Layers panel, right click on `LC08_20180508_B1` and select Zoom to Layer(s).
+
+Now you can see the ground feature much clearer because the image have relatively better contrast as shown in the screenshot below.
+
+![](img03/image37.jpg)
+
+## Creating Composite Images using SCP
+
+With satellite remote sensing systems it is possible to detect and record parts of the electromagnetic spectrum that cannot be detected by the naked eye, for example, the infrared band. To visualise this information we pair up display colours (red-green-blue) with spectral bands in the observation system that do not necessary correspond to them. In so doing, we create coloured composites that are sometimes called 'false colour images'. In this section, you will learn how to create colour composite image by using SCP of QGIS.
+
+### Building a band set
+
+Image input in SCP is named **band set**. One of the main changes of SCP 6 will be the ability to define multiple band sets (in SCP 5 only one Band set can be defined) as input for classification and other tools.
+
+Now, let us create a band set by using Band Set tool.
+
+-   From the menu bar, click on Semi-Automatic Classification Plugin ![](img03/image38.jpg){width="21" height="23"} icon.
+
+Semi-Automatic Classification Plugin dialog window appears.
+
+![](img03/image39.jpg)
+
+Next, we will select the input image bands from Single Band list.
+
+-   From **Single band list**, click on the check-box in front of Band 1 to Band 7.
+
+-   Then, click on the plus icon located at the right panel.
+
+![](img03/image41.jpg)
+
+Notice that the selected seven bands have been added into **Band set definition** list as shown below.
+
+![](img03/image42.jpg)
+
+Band sets are identified by numbers (i.e. Band set 1) and the active band set (i.e. highlighted with a bold green name) is used as input for the tools in SCP dock. It will be possible to change the classification input just by selecting the corresponding band set tab. In a few clicks we will be able to compare the classification previews of different images without the need to create different QGIS projects.
+
+Next, we will update the wavelength summary.
+
+-   At Wavelength quick settings, click on the drop-down list at the back.
+
+![](img03/image43.jpg)
+
+-   Then, select Landsat 8 OLI \[bands 1, 2, ,3, 4, 5, 6, 7\] which is the input images source.
+
+![](img03/image44.jpg)
+
+Notice that the Band set list information have been updated.
+
+![](img03/image45.jpg)
+
+### Creating natural colour composite image
+
+Now, we are ready to create colour composite image by using the Band set.
+
+First, we will create a natural colour composite by using
+
+-   Return to QGIS window.
+
+-   Click on the drop-down list behind RGB pane.
+
+-   Select 3-2-1 from the drop-down list. If it is not available, type directly onto the pane.
+
+![](img03/image46.jpg){width="160"}
+
+Notice that a Virtula Band Set 1 is added onto Layers panel.
+
+![](img03/image47.jpg){width="269"}
+
+Your screen should look similar screenshot below.
+
+![](img03/image48.jpg)
+
+This is what the terrain would look like if we were onboard the satellite platform looking down on Singapore.
+
+While healthy vegetation appears green, cleared fields are light, unhealthy flora is brown and yellow, roads are grey, and coastlines appear whitish. This band combination is well suited for the analysis of aquatic ecosystems, determining water depth. It is also used to study man-made features. With this band combination, logged areas and sparse vegetation are poorly detected, and it is difficult to differentiate one type of vegetation from another.
+
+### Creating false colour composite image
+
+-   Let us now create a false colour composite by select the bands' RGB as 5-4-3.
+
+![](img03/image49.jpg)
+
+In false colour composite image, vegetation appears in shades of red, urban areas are green-blue, and the soil color varies from dark to light brown. The shades of deep red indicate healthy and/or broadleaf vegetation, while grassy or sparse/shrubby vegetation appears in lighter shades. This combination is very popular and is used for analyzing vegetation, monitoring soil and crops.
+
+### Creating colour composite with Bands 7-5-3
+
+-   Now, let us create a new colour composite by select the bands' RGB as 7-5-3.
+
+Your screen should look similar to screenshot below.
+
+![](img03/image50.jpg)
+
+This band composite produces an image close to natural colors, and at the same time allows analyzingvthe atmosphere and smoke. Healthy vegetation appears bright green, the grass is green, bright pink areas indicate bare earth, brown and orange hues are characteristic of sparse vegetation. Dead vegetation appears orange, and the water is blue. This band composite is well suited for the analysis of agricultural lands and wetlands, monitoring the dynamics of fires, and post-fire analysis of the territory. Burnt-down areas will appear bright red.
+
+> DIY: Using the steps your had learned, create the following colour composites: (5,6,2), (5,6,4), (7,6,4), (6,5,4) and (7,6,5)
+
+## Deriving Vegetation Indices (VI)
+
+Approximately 70% of the Earth's land surface is covered with vegetation. Knowledge about variations in vegetation species and community distribution patterns, alterations in vegetation phenological (growth) cycles, and modifications in the plant physiology and morphology provides valuable insight into the climatic, edaphic, geologic, and physiographic characteristics of an area (e.g., Jackson and Jensen, 2005; Im and Jensen, 2009). Furthermore, the goal of global agriculture production and the grain sector of most economies is to feed billions of people. Therefore, it is not surprising that scientists have devoted significant effort to develop remote sensing systems and visual and digital image processing algorithms to extract important vegetation biophysical information from remotely sensed data.
+
+Many of the remote sensing techniques are generic in nature and may be applied to a variety of vegetated landscapes, including:
+
+-   agriculture,
+
+-   forests,
+
+-   rangeland,
+
+-   wetland, and
+
+-   manicured urban vegetation.
+
+In this section, you will learn how to use
+
+### Computing Normalized Difference Vegetation Index (NDVI)
+
+Normalized Difference Vegetation Index (NDVI) quantifies vegetation by measuring the difference between near-infrared (which vegetation strongly reflects) and red light (which vegetation absorbs). The general formula of NDVI is defined as:
+
+![](img03/image51.png){width="182"}
+
+whereby NIR indicates near infra-red band and Red indicates red band.
+
+The result of this formula generates a value between -1 and +1. If you have low reflectance (or low values) in the red channel and high reflectance in the NIR channel, this will yield a high NDVI value. And vice versa.
+
+Overall, NDVI is a standardized way to measure healthy vegetation. In general, healthy vegetation (chlorophyll) reflects more near-infrared (NIR) and green light compared to other wavelengths. But it absorbs more red and blue light. When you have high NDVI values, you have healthier vegetation. ![](img03/image52.jpg){width="275"}
+
+Since we already know that for Landsat 8, ban5 and band 4 are near infra-red and red respectively. We can compute NDVI by using Raster Calculator of QGIS.
+
+-   From menu bar, click on **Raster** -\> **Raster Calculator**.
+
+Raster Calculator dialog window appears.
+
+-   Click on the check-box in front of **Create on-the-fly raster instead of writing layer to disk**.
+
+![](img03/image53.jpg)
+
+-   By clicking on appropriate band from the **Raster Band** pane and **Operators** pane, construct a calculation expression as shown on the screen shot below.
+
+![](img03/image54.jpg)
+
+-   When you are ready, click on **OK** button to run the process.
+
+With a second, a temporary raster layer is added on Layers panel and display on View window as shown on the screenshot below.
+
+![](img03/image55.jpg)
+
+Notice that the NDVI values range from -0.33 to 0.63. NDVI always ranges from -1 to +1. But there isn\'t a distinct boundary for each type of land cover. For example, when you have negative values, it\'s **highly likely that it\'s water**. On the other hand, if you have an NDVI value close to +1, there\'s a high possibility that it\'s **dense green leaves**. But when NDVI is close to zero, there are likely no green leaves and it could even be an **urbanized area**.
+
+> DIY: Using the steps you had learned, save the temporary NDVI layer in GeoTIFF. For easy visual interpretation, you might want to change the colour scheme to a diverging pseudo colour scheme similar to the screenshot below.
+
+![](img03/image56.jpg)
+
+### Computing Normalized Difference Built-up Index (NDBI)
+
+There are lots of indexes for the analysis of built-up area. Normalized Difference Built-up Index (NDBI), Built-up Index (BU), Urban Index (UI), Index-based Built-up Index (IBI), Enhanced Built-up and Bareness Index (EBBI) are most common indexes for analysis the built-up areas. These different indexes having their own formula, own calculation method. The build-up areas and bare soil reflects more SWIR than NIR. Water body doesn’t reflect on Infrared spectrum. In case of greenie surface, reflection of NIR is higher than SWIR spectrum. 
+
+The general formula of NDBI can be defined as follow:
+
+NDBI = (SWIR – NIR) / (SWIR + NIR)
+
+whereby NIR and SWIR are the near infrared (NIR) and the Short-Wave infrared (SWIR) bands respectively.
+
+Similar to NDVI, the NDBI value lies between -1 to +1. Negative value of NDBI represent water bodies where as higher value represent build-up areas. NDBI value for vegetation is low.
+
+Now, let us compute NDBI by using Raster Calculator of QGIS.
+
+> DIY: Using the steps you had learned, compute the NDBI by using Landsat 8 bands, save the temporary NDBI layer in GeoTIFF format. 
+
+
+
+
