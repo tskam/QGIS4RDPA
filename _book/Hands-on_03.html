@@ -144,7 +144,7 @@ ul.task-list{list-style: none;}
   <li><a href="#creating-false-colour-composite-image" id="toc-creating-false-colour-composite-image" class="nav-link" data-scroll-target="#creating-false-colour-composite-image"> <span class="header-section-number">4.6.3</span> Creating false colour composite image</a></li>
   <li><a href="#creating-colour-composite-with-bands-7-5-3" id="toc-creating-colour-composite-with-bands-7-5-3" class="nav-link" data-scroll-target="#creating-colour-composite-with-bands-7-5-3"> <span class="header-section-number">4.6.4</span> Creating colour composite with Bands 7-5-3</a></li>
   </ul></li>
-  <li><a href="#deriving-vegetation-indices-vi" id="toc-deriving-vegetation-indices-vi" class="nav-link" data-scroll-target="#deriving-vegetation-indices-vi"> <span class="header-section-number">4.7</span> Deriving Vegetation Indices (VI)</a>
+  <li><a href="#deriving-band-combinations-ratios-and-indices" id="toc-deriving-band-combinations-ratios-and-indices" class="nav-link" data-scroll-target="#deriving-band-combinations-ratios-and-indices"> <span class="header-section-number">4.7</span> Deriving Band Combinations, Ratios and Indices</a>
   <ul class="collapse">
   <li><a href="#computing-normalized-difference-vegetation-index-ndvi" id="toc-computing-normalized-difference-vegetation-index-ndvi" class="nav-link" data-scroll-target="#computing-normalized-difference-vegetation-index-ndvi"> <span class="header-section-number">4.7.1</span> Computing Normalized Difference Vegetation Index (NDVI)</a></li>
   <li><a href="#computing-normalized-difference-built-up-index-ndbi" id="toc-computing-normalized-difference-built-up-index-ndbi" class="nav-link" data-scroll-target="#computing-normalized-difference-built-up-index-ndbi"> <span class="header-section-number">4.7.2</span> Computing Normalized Difference Built-up Index (NDBI)</a></li>
@@ -445,18 +445,11 @@ ul.task-list{list-style: none;}
 </blockquote>
 </section>
 </section>
-<section id="deriving-vegetation-indices-vi" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="deriving-vegetation-indices-vi"><span class="header-section-number">4.7</span> Deriving Vegetation Indices (VI)</h2>
-<p>Approximately 70% of the Earth’s land surface is covered with vegetation. Knowledge about variations in vegetation species and community distribution patterns, alterations in vegetation phenological (growth) cycles, and modifications in the plant physiology and morphology provides valuable insight into the climatic, edaphic, geologic, and physiographic characteristics of an area (e.g., Jackson and Jensen, 2005; Im and Jensen, 2009). Furthermore, the goal of global agriculture production and the grain sector of most economies is to feed billions of people. Therefore, it is not surprising that scientists have devoted significant effort to develop remote sensing systems and visual and digital image processing algorithms to extract important vegetation biophysical information from remotely sensed data.</p>
-<p>Many of the remote sensing techniques are generic in nature and may be applied to a variety of vegetated landscapes, including:</p>
-<ul>
-<li><p>agriculture,</p></li>
-<li><p>forests,</p></li>
-<li><p>rangeland,</p></li>
-<li><p>wetland, and</p></li>
-<li><p>manicured urban vegetation.</p></li>
-</ul>
-<p>In this section, you will learn how to use</p>
+<section id="deriving-band-combinations-ratios-and-indices" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="deriving-band-combinations-ratios-and-indices"><span class="header-section-number">4.7</span> Deriving Band Combinations, Ratios and Indices</h2>
+<p>For simple applications such as delineating surface water boundaries, a simple process such as display of a near or middle infrared band can be sufficient. Algebraic combinations of certain bands via division, addition, subtraction, or multiplication can lead to enhanced information. Differences and ratios in various bands are primarily used for change detection and spectral enhancement studies.</p>
+<p>The most common image band ratios typically include the following: infrared band over red band for vegetation distribution; short-wave infrared band over near infrared band for urban built-up area, green band over red band for mapping surface water bodies and wetland delineation; red band over infrared band for mapping turbid waters; and red band over blue band or red band over green band for mineral mapping.</p>
+<p>In this section, you will learn how to use Raster Calculator function of QGIS to compute these indices.</p>
 <section id="computing-normalized-difference-vegetation-index-ndvi" class="level3" data-number="4.7.1">
 <h3 data-number="4.7.1" class="anchored" data-anchor-id="computing-normalized-difference-vegetation-index-ndvi"><span class="header-section-number">4.7.1</span> Computing Normalized Difference Vegetation Index (NDVI)</h3>
 <p>Normalized Difference Vegetation Index (NDVI) quantifies vegetation by measuring the difference between near-infrared (which vegetation strongly reflects) and red light (which vegetation absorbs). The general formula of NDVI is defined as:</p>
@@ -464,7 +457,7 @@ ul.task-list{list-style: none;}
 <p>whereby NIR indicates near infra-red band and Red indicates red band.</p>
 <p>The result of this formula generates a value between -1 and +1. If you have low reflectance (or low values) in the red channel and high reflectance in the NIR channel, this will yield a high NDVI value. And vice versa.</p>
 <p>Overall, NDVI is a standardized way to measure healthy vegetation. In general, healthy vegetation (chlorophyll) reflects more near-infrared (NIR) and green light compared to other wavelengths. But it absorbs more red and blue light. When you have high NDVI values, you have healthier vegetation. <img src="img03/image52.jpg" class="img-fluid" width="275"></p>
-<p>Since we already know that for Landsat 8, ban5 and band 4 are near infra-red and red respectively. We can compute NDVI by using Raster Calculator of QGIS.</p>
+<p>Since we already know that for Landsat 8, band 5 and band 4 are near infra-red and red respectively. We can compute NDVI by using Raster Calculator of QGIS.</p>
 <ul>
 <li>From menu bar, click on <strong>Raster</strong> -&gt; <strong>Raster Calculator</strong>.</li>
 </ul>
@@ -482,7 +475,7 @@ ul.task-list{list-style: none;}
 </ul>
 <p>With a second, a temporary raster layer is added on Layers panel and display on View window as shown on the screenshot below.</p>
 <p><img src="img03/image55.jpg" class="img-fluid"></p>
-<p>Notice that the NDVI values range from -0.33 to 0.63. NDVI always ranges from -1 to +1. But there isn't a distinct boundary for each type of land cover. For example, when you have negative values, it's <strong>highly likely that it's water</strong>. On the other hand, if you have an NDVI value close to +1, there's a high possibility that it's <strong>dense green leaves</strong>. But when NDVI is close to zero, there are likely no green leaves and it could even be an <strong>urbanized area</strong>.</p>
+<p>Notice that the NDVI values range from -0.33 to 0.63. NDVI always ranges from -1 to +1. But there isn’t a distinct boundary for each type of land cover. For example, when you have negative values, it’s <strong>highly likely that it’s water</strong>. On the other hand, if you have an NDVI value close to +1, there’s a high possibility that it’s <strong>dense green leaves</strong>. But when NDVI is close to zero, there are likely no green leaves and it could even be an <strong>urbanized area</strong>.</p>
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, save the temporary NDVI layer in GeoTIFF. For easy visual interpretation, you might want to change the colour scheme to a diverging pseudo colour scheme similar to the screenshot below.</p>
 </blockquote>
@@ -499,6 +492,8 @@ ul.task-list{list-style: none;}
 <blockquote class="blockquote">
 <p>DIY: Using the steps you had learned, compute the NDBI by using Landsat 8 bands, save the temporary NDBI layer in GeoTIFF format.</p>
 </blockquote>
+<p>Screenshot below show an example of NDBI layer. Areas with positive NDBI are shaded in brown and areas with negative NDBI are shared in green.</p>
+<p><img src="img03/image57.jpg" class="img-fluid"></p>
 
 
 </section>

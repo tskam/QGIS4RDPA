@@ -6,10 +6,10 @@ In this chapter, we will focus on learning how to process the downloaded Landsat
 
 By the end of this chapter, you will acquire the skills to:
 
-- extract subset from a complete scene,
-- enhance individual band for clearer visualisation, 
-- create composite images by using multiple bands for visual interpretation,
-- compute vegetation indices for land cover analysis.
+-   extract subset from a complete scene,
+-   enhance individual band for clearer visualisation,
+-   create composite images by using multiple bands for visual interpretation,
+-   compute vegetation indices for land cover analysis.
 
 ## Installing Semi-Automatic Classification Plugin
 
@@ -328,23 +328,13 @@ This band composite produces an image close to natural colors, and at the same t
 
 > DIY: Using the steps your had learned, create the following colour composites: (5,6,2), (5,6,4), (7,6,4), (6,5,4) and (7,6,5)
 
-## Deriving Vegetation Indices (VI)
+## Deriving Band Combinations, Ratios and Indices
 
-Approximately 70% of the Earth's land surface is covered with vegetation. Knowledge about variations in vegetation species and community distribution patterns, alterations in vegetation phenological (growth) cycles, and modifications in the plant physiology and morphology provides valuable insight into the climatic, edaphic, geologic, and physiographic characteristics of an area (e.g., Jackson and Jensen, 2005; Im and Jensen, 2009). Furthermore, the goal of global agriculture production and the grain sector of most economies is to feed billions of people. Therefore, it is not surprising that scientists have devoted significant effort to develop remote sensing systems and visual and digital image processing algorithms to extract important vegetation biophysical information from remotely sensed data.
+For simple applications such as delineating surface water boundaries, a simple process such as display of a near or middle infrared band can be sufficient. Algebraic combinations of certain bands via division, addition, subtraction, or multiplication can lead to enhanced information. Differences and ratios in various bands are primarily used for change detection and spectral enhancement studies.
 
-Many of the remote sensing techniques are generic in nature and may be applied to a variety of vegetated landscapes, including:
+The most common image band ratios typically include the following: infrared band over red band for vegetation distribution; short-wave infrared band over near infrared band for urban built-up area, green band over red band for mapping surface water bodies and wetland delineation; red band over infrared band for mapping turbid waters; and red band over blue band or red band over green band for mineral mapping.
 
--   agriculture,
-
--   forests,
-
--   rangeland,
-
--   wetland, and
-
--   manicured urban vegetation.
-
-In this section, you will learn how to use
+In this section, you will learn how to use Raster Calculator function of QGIS to compute these indices.
 
 ### Computing Normalized Difference Vegetation Index (NDVI)
 
@@ -358,7 +348,7 @@ The result of this formula generates a value between -1 and +1. If you have low 
 
 Overall, NDVI is a standardized way to measure healthy vegetation. In general, healthy vegetation (chlorophyll) reflects more near-infrared (NIR) and green light compared to other wavelengths. But it absorbs more red and blue light. When you have high NDVI values, you have healthier vegetation. ![](img03/image52.jpg){width="275"}
 
-Since we already know that for Landsat 8, ban5 and band 4 are near infra-red and red respectively. We can compute NDVI by using Raster Calculator of QGIS.
+Since we already know that for Landsat 8, band 5 and band 4 are near infra-red and red respectively. We can compute NDVI by using Raster Calculator of QGIS.
 
 -   From menu bar, click on **Raster** -\> **Raster Calculator**.
 
@@ -378,7 +368,7 @@ With a second, a temporary raster layer is added on Layers panel and display on 
 
 ![](img03/image55.jpg)
 
-Notice that the NDVI values range from -0.33 to 0.63. NDVI always ranges from -1 to +1. But there isn\'t a distinct boundary for each type of land cover. For example, when you have negative values, it\'s **highly likely that it\'s water**. On the other hand, if you have an NDVI value close to +1, there\'s a high possibility that it\'s **dense green leaves**. But when NDVI is close to zero, there are likely no green leaves and it could even be an **urbanized area**.
+Notice that the NDVI values range from -0.33 to 0.63. NDVI always ranges from -1 to +1. But there isn't a distinct boundary for each type of land cover. For example, when you have negative values, it's **highly likely that it's water**. On the other hand, if you have an NDVI value close to +1, there's a high possibility that it's **dense green leaves**. But when NDVI is close to zero, there are likely no green leaves and it could even be an **urbanized area**.
 
 > DIY: Using the steps you had learned, save the temporary NDVI layer in GeoTIFF. For easy visual interpretation, you might want to change the colour scheme to a diverging pseudo colour scheme similar to the screenshot below.
 
@@ -386,11 +376,11 @@ Notice that the NDVI values range from -0.33 to 0.63. NDVI always ranges from -1
 
 ### Computing Normalized Difference Built-up Index (NDBI)
 
-There are lots of indexes for the analysis of built-up area. Normalized Difference Built-up Index (NDBI), Built-up Index (BU), Urban Index (UI), Index-based Built-up Index (IBI), Enhanced Built-up and Bareness Index (EBBI) are most common indexes for analysis the built-up areas. These different indexes having their own formula, own calculation method. The build-up areas and bare soil reflects more SWIR than NIR. Water body doesn’t reflect on Infrared spectrum. In case of greenie surface, reflection of NIR is higher than SWIR spectrum. 
+There are lots of indexes for the analysis of built-up area. Normalized Difference Built-up Index (NDBI), Built-up Index (BU), Urban Index (UI), Index-based Built-up Index (IBI), Enhanced Built-up and Bareness Index (EBBI) are most common indexes for analysis the built-up areas. These different indexes having their own formula, own calculation method. The build-up areas and bare soil reflects more SWIR than NIR. Water body doesn't reflect on Infrared spectrum. In case of greenie surface, reflection of NIR is higher than SWIR spectrum.
 
 The general formula of NDBI can be defined as follow:
 
-NDBI = (SWIR – NIR) / (SWIR + NIR)
+NDBI = (SWIR -- NIR) / (SWIR + NIR)
 
 whereby NIR and SWIR are the near infrared (NIR) and the Short-Wave infrared (SWIR) bands respectively.
 
@@ -398,8 +388,8 @@ Similar to NDVI, the NDBI value lies between -1 to +1. Negative value of NDBI re
 
 Now, let us compute NDBI by using Raster Calculator of QGIS.
 
-> DIY: Using the steps you had learned, compute the NDBI by using Landsat 8 bands, save the temporary NDBI layer in GeoTIFF format. 
+> DIY: Using the steps you had learned, compute the NDBI by using Landsat 8 bands, save the temporary NDBI layer in GeoTIFF format.
 
+Screenshot below show an example of NDBI layer. Areas with positive NDBI are shaded in brown and areas with negative NDBI are shared in green.
 
-
-
+![](img03/image57.jpg)
