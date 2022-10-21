@@ -11,6 +11,8 @@ book:
     - Hands-on_01.qmd
     - Hands-on_02.qmd
     - Hands-on_03.qmd
+    - Hands-on_04.qmd
+    - Hands-on_05.qmd
     - references.qmd
 
 bibliography: references.bib

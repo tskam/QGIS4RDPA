@@ -1,0 +1,13 @@
+#   Unsupervised Satellite Image Classification for Urban Land Cover Mapping
+
+## Overview
+
+In this chapter, you will gain hands-on experience on using QGIS and Semi-Automatic Classification Plugin of QGIS to perform unsupervised satellite image classification for urban land cover mapping. It is a continuation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to [Chapter 2: Acquiring Landsat 8 Data](Hands-on_01.html) to download a Landsat 8 data set of an area of interest.
+
+By the end of this chapter, you will acquire the skills to:
+
+-   extract subset from a complete scene,
+-   enhance individual band for clearer visualisation,
+-   create composite images by using multiple bands for visual interpretation,
+-   compute vegetation indices for land cover analysis.
+
