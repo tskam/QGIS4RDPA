@@ -212,7 +212,7 @@ You can also see in the tab Macroclasses that the first macroclass has been adde
 
 ![](img04/image25.jpg)
 
-> DIY: Using the steps you had learned, define a training sample for Built-up 3 as shown in the figure below.
+> DIY: Using the steps you had learned, define a training sample for Impervious surfaces as shown in the figure below.
 
 ![](img04/image26.jpg)
 
