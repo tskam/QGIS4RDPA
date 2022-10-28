@@ -138,7 +138,7 @@ Notice that a temporary layer called `YT_train` has been add onto Layer panel. A
 
 ![](img04/image12.jpg){width="361"}
 
-Before we start to create ROIs, let use understand two terms use in SCP, namely **Classes** and **Macroclasses**. In SCP, each ROI is identified by a Class ID (i.e. C ID), and each ROI is assigned to a land cover class through a Macroclass ID (i.e. MC ID). Macroclasses are composed of several materials having different spectral signatures; in order to achieve good classification results we should separate spectral signatures of different materials, even if belonging to the same macroclass. Thus,we are going to create several ROIs for each macro class (setting the same MCID, but assigning a different C ID to every ROI).
+Before we start to create ROIs, let us understand two terms use in SCP, namely **Classes** and **Macroclasses**. In SCP, each ROI is identified by a Class ID (i.e. C ID), and each ROI is assigned to a land cover class through a Macroclass ID (i.e. MC ID). Macroclasses are composed of several materials having different spectral signatures; in order to achieve good classification results we should separate spectral signatures of different materials, even if belonging to the same macroclass. Thus,we are going to create several ROIs for each macro class (setting the same MCID, but assigning a different C ID to every ROI).
 
 #### Defining training sample by using polygon
 
@@ -156,7 +156,7 @@ With SCP, a training sample be created by either manually drawing a polygon or w
 
 ![](img04/image14.jpg)
 
--   On the View window, left click water sample siteto define the ROI vertices and right click to define the last vertex closing the polygon.
+-   On the View window, left click water sample site to define the ROI vertices and right click to define the last vertex closing the polygon.
 
 An orange semi-transparent polygon is displayed over the image, which is a temporary polygon (i.e. it is not saved in the Training input).
 
@@ -177,6 +177,8 @@ After a few seconds, the ROI is listed in the ROI Signature list and the spectra
 ![](img04/image17.jpg){width="437"}
 
 As you can see, the C ID in ROI Signature list is automatically increased by 1. Saved ROI is displayed as a dark polygon in the map and the temporary ROI is removed.
+
+**Be warned:** The MC ID will not increase automatically. It is important for us to increase the number manually every time a new macroclass is used.
 
 ![](img04/image18.jpg)
 
