@@ -292,7 +292,7 @@ First, we will create a natural colour composite by using
 
 -   Click on the drop-down list behind RGB pane.
 
--   Select 3-2-1 from the drop-down list. If it is not available, type directly onto the pane.
+-   Select 4-3-2 from the drop-down list. If it is not available, type directly onto the pane.
 
 ![](img03/image46.jpg){width="160"}
 
