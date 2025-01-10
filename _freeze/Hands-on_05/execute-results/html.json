@@ -1,0 +1,15 @@
+{
+  "hash": "457f863149437ec549e0cb25cd29e641",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Unsupervised Satellite Image Classification for Urban Land Cover Mapping\"\ndate: \"10/2/2022\"\ndate-modified: \"last-modified\"\nformat:\n  html:\n    theme: materia\n    fontsize: 1.2em\n    toc-font-size: 0.8em\nexecute: \n  freeze: true\n---\n\n\n\n\n\n\n## Overview\n\nIn this chapter, you will gain hands-on experience on using QGIS and Semi-Automatic Classification Plugin of QGIS to perform unsupervised satellite image classification for urban land cover mapping. It is a continuation of Chapter 2. We assume that you already have Landsat 8 data set(s) downloaded. If you have yet to do so, please refer to [Chapter 2: Acquiring Landsat 8 Data](Hands-on_01.html) to download a Landsat 8 data set of an area of interest.\n\nBy the end of this chapter, you will acquire the skills to:\n\n-   extract subset from a complete scene,\n-   enhance individual band for clearer visualisation,\n-   create composite images by using multiple bands for visual interpretation,\n-   compute vegetation indices for land cover analysis.\n\n\n\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,4 +1,15 @@
-# Acquiring Sentinel-2 Data
+---
+title: "Acquiring Sentinel-2 Data"
+date: "10/2/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  freeze: true
+---
 
 ## Overview
 
@@ -11,7 +22,7 @@ Sentinel-2 is an Earth observation mission from the Copernicus Programme that sy
 
 ## Register and create a user account with Copernicus
 
--   First, let us visit Copernicus Open Access Hub website by click on this [url](https://scihub.copernicus.eu/dhus/#/home).
+-   First, let us visit Copernicus Open Access Hub website by click on this [url](https://dataspace.copernicus.eu/).
 
 Copernicus Open Access Hub website appears on your default web browser as shown be below.
 
@@ -37,7 +48,7 @@ A new window open on your web browser.
 
 Now, you are ready to download Sentinel-2 data from Copernicus Open Access Hub.
 
-### Step 1: Select area of interest 
+### Step 1: Select area of interest
 
 The easiest way to define the area of interest is by zooming into your area of interest.
 
@@ -73,7 +84,7 @@ Notice that the area of interest has been locked.
 
 ![](img02/image8.jpg)
 
-### Step 2: Specifying search criteria 
+### Step 2: Specifying search criteria
 
 Next, we will specify the search criteria.
 
@@ -131,4 +142,9 @@ Be patient, the data size is very large and will take at least an hour to downlo
 
 > Gentle reminder: The downloaded data will be in zip file format. You need to unzip the file. It is also a good practice to keep the downloaded files in the project folder.
 
-
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/QGIS4RDPA/_book/Hands-on_02.html",
+                   to = "C://SMT201_AY2024-25T2/QGIS4RDPA/Hands-on_02.pdf")
+```

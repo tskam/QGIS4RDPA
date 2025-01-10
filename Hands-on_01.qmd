@@ -1,8 +1,19 @@
-# Acquiring Landsat 8 Data
+---
+title: "Acquiring Landsat 8 Data"
+date: "10/2/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  freeze: true
+---
 
 ## Overview
 
-Landsat 8 is an American Earth observation satellite launched on 11 February 2013. The data can be downloaded free of charge by using EarthExplorer portal of USGS. In this chapter, you will learn how to use interfaces provided by EarthExplorer to :
+Landsat 8 is an American Earth observation satellite launched on 11 February 2013. The data can be downloaded free of charge by using EarthExplorer portal of USGS. In this chapter, you will learn how to use interfaces provided by **EarthExplorer** to :
 
 -   search for area of interest,
 -   define area of interest,
@@ -147,6 +158,9 @@ Be patient, the data size is very large and will take sometime to download.
 
 > Gentle reminder: The downloaded data will be in zip file format. You need to unzip the file. It is also a good practice to keep the downloaded files in the project folder.
 
-## Downloading Sentinel 2 data
-
-Sentinel-2 is an Earth observation mission from the Copernicus Programme that systematically acquires optical imagery at high spatial resolution (10 m to 60 m) over land and coastal waters.
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/QGIS4RDPA/_book/Hands-on_01.html",
+                   to = "C://SMT201_AY2024-25T2/QGIS4RDPA/Hands-on_01.pdf")
+```

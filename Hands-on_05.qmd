@@ -1,4 +1,15 @@
-#   Unsupervised Satellite Image Classification for Urban Land Cover Mapping
+---
+title: "Unsupervised Satellite Image Classification for Urban Land Cover Mapping"
+date: "10/2/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  freeze: true
+---
 
 ## Overview
 
@@ -11,3 +22,9 @@ By the end of this chapter, you will acquire the skills to:
 -   create composite images by using multiple bands for visual interpretation,
 -   compute vegetation indices for land cover analysis.
 
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/QGIS4RDPA/_book/Hands-on_05.html",
+                   to = "C://SMT201_AY2024-25T2/QGIS4RDPA/Hands-on_05.pdf")
+```

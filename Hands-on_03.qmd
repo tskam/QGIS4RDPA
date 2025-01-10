@@ -1,4 +1,15 @@
-# Processing and Visualising Landsat 8 Data
+---
+title: "Processing and Visualising Landsat 8 Data"
+date: "10/2/2022"
+date-modified: "last-modified"
+format:
+  html:
+    theme: materia
+    fontsize: 1.2em
+    toc-font-size: 0.8em
+execute: 
+  freeze: true
+---
 
 ## Overview
 
@@ -393,3 +404,12 @@ Now, let us compute NDBI by using Raster Calculator of QGIS.
 Screenshot below show an example of NDBI layer. Areas with positive NDBI are shaded in brown and areas with negative NDBI are shared in green.
 
 ![](img03/image57.jpg)
+
+
+```{r}
+#| echo: false
+#| eval: false
+renderthis::to_pdf(from = "C://tskam/QGIS4RDPA/_book/Hands-on_03.html",
+                   to = "C://SMT201_AY2024-25T2/QGIS4RDPA/Hands-on_03.pdf")
+```
+

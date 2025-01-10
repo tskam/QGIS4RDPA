@@ -3,7 +3,7 @@ project:
 
 book:
   title: "Remotely Sensed Data Processing and Analysis: QGIS Methods"
-  author: "DR. Kam Tin Seong"
+  author: "Dr. Kam Tin Seong"
   date: "02/10/2022"
   chapters:
     - index.qmd
