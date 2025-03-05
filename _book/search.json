@@ -14,7 +14,7 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "1.1 Downloading QGIS installer\nThe website should look something like this:\nYour screen should look similar to the figure below.\nAfter a few seconds (depend on your network speed), a pop-up window appears.\nBe patient, the downloading will take a few minutes depend on the speed of your internet.",
+    "text": "1.1 Downloading QGIS installer\nQGIS (formally known as Quantum GIS) is a full-features open source GIS software. It is the GIS tool used in this course.\nThis section provides you with step-by-step guide on how to download and install QGIS in your window-based computer (i.e. desktop or laptop).\nThe website should look something like this:\nYour screen should look similar to the figure below.\nAfter a few seconds (depend on your network speed), a pop-up window appears.\nBe patient, the downloading will take a few minutes depend on the speed of your internet.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
