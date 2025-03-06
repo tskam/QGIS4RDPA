@@ -134,19 +134,15 @@ Product info window appears.
 
 ![](img02/image16.jpg)
 
--   Scroll down to read the important information of the scene. For example, the report shows that the scene has relatively less cloud cover of 5.6%.
-
--   When you are ready to download the data set, click on the **Close** button to close the window.
-
--   At the left window, hover the mouse over the scene dated 2018/02/10. Click on **Download** button.
+-   Expand PRODUCT INFO pane to read the important information of the scene. For example, the report shows that the scene has relatively less cloud cover of 81.17% which is very high.  However the quick view image shows that most of the cloud are not on top of Singapore.
 
 ![](img02/image17.jpg)
 
-A pop-up window appears informing us that the offline product retrieval had been initiated and we should check our Cart to know when it will be ready.
+-   When you are ready to download the data set, click on **Download** button located on the lower right corner of the window.
 
-![](img02/image18.jpg){width="274"}
+Alternative method: At the left window, hover the mouse over the scene dated 2024-02-04T03:19:31, then click on **Download** button.
 
--   Click on OK button to close the window.
+![](img02/image18.jpg)
 
 Be patient, the data size is very large and will take at least an hour to download.
 

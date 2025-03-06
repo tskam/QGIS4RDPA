@@ -177,6 +177,9 @@ Notice that a temporary layer called `Clipped` is added in the *Layers* panel an
 
 Next , we will save the temporary clipped raster layer into GeoPackage.
 
+**Note: Please save in geotiff format if GeoPackage do not work for you.**
+
+
 -   From **Layer** panel, right-click on **Clipped**.
 
 -   Select **Export** -\> **Save as** from the context menu.
@@ -405,11 +408,9 @@ Screenshot below show an example of NDBI layer. Areas with positive NDBI are sha
 
 ![](img03/image57.jpg)
 
-
 ```{r}
 #| echo: false
 #| eval: false
 renderthis::to_pdf(from = "C://tskam/QGIS4RDPA/_book/Hands-on_03.html",
                    to = "C://SMT201_AY2024-25T2/QGIS4RDPA/Hands-on_03.pdf")
 ```
-
